@@ -7,11 +7,9 @@ int main(void) {
     scanf("%d %d %d", &a, &b, &c);
     size_t negative_count = (int)(a < 0) + (int)(b < 0) + (int)(c < 0);
 
-    if(negative_count % 2 == 0)
-    {
+    if (negative_count % 2 == 0) {
         printf("1\n");
-    } else
-    {
+    } else {
         printf("-1\n");
     }
     return 0;

@@ -1,11 +1,12 @@
 *
-!*/
+# !*/
 !*.c
-!*.css
+# !*.css
 !*.h
-!*.html
-!*.py
-!*.sql
-!requirements.txt
+# !*.html
+# !*.py
+# !*.sql
+# !requirements.txt
 !.gitignore
-!Makefile
+!.clang-format
+# !Makefile
