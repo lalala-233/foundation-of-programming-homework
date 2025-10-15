@@ -1,0 +1,11 @@
+*
+!*/
+!*.c
+!*.css
+!*.h
+!*.html
+!*.py
+!*.sql
+!requirements.txt
+!.gitignore
+!Makefile
