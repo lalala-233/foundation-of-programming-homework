@@ -1,5 +1,4 @@
 // 将数组中的 0 移到末尾
-#include <inttypes.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
