@@ -21,7 +21,7 @@ int32_t main(void) {
         return 0;
     }
     int32_t start = len_1;
-    for (int i = 1;; i++) {
+    for (int32_t i = 1;; i++) {
         int32_t index_1 = len_1 - i;
         int32_t index_2 = len_2 - i;
         if (index_1 < 0 || index_2 < 0) {

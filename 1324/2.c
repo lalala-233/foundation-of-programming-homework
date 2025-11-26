@@ -10,7 +10,7 @@ int32_t main(void) {
 
     int32_t sum = 0;
     int32_t valid_count = 0;
-    for (int i = 0; i < count; i++) {
+    for (int32_t i = 0; i < count; i++) {
         int32_t number;
         bool is_success = (bool)scanf("%" PRIi32, &number);
         if (is_success) {
