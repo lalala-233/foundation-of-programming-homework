@@ -12,7 +12,7 @@ int32_t main(void) {
     fgets(str_2, sizeof(str_2), stdin);
 
     // fgets will get `\n`, - 1
-    // as a index, you must - 1
+    // as an index, you must - 1
     int32_t len_1 = strlen(str_1) - 2;
     int32_t len_2 = strlen(str_2) - 2;
 
