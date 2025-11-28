@@ -103,7 +103,7 @@ int32_t main(void) {
     int32_t map[total_y][total_x];
 
     Direction direction = RightTop; // Or LeftDown
-    for (int i = 1, x = 0, y = 0; i <= total_x * total_y; i++) {
+    for (int32_t i = 1, x = 0, y = 0; i <= total_x * total_y; i++) {
         map[y][x] = i;
         direction = next_direction(direction, x, y, total_x - 1, total_y - 1);
         update_unchecked(direction, &x, &y);

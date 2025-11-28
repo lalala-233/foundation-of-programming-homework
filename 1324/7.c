@@ -28,9 +28,6 @@ bool is_substr(const char* origin, const char* substr) {
         }
     }
 }
-int32_t find_left_start(const char* origin, const char* substr, int32_t count) {
-    return -1;
-}
 int32_t main(void) {
     int32_t s_len = 300;
     char* s = read_len(&s_len);
