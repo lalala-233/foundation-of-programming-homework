@@ -40,6 +40,9 @@ void update_unchecked(Direction current, int32_t* x, int32_t* y) {
 Direction next_direction(Direction current, int32_t x, int32_t y, int32_t max_x, int32_t max_y) {
     switch (current) {
         case Down: {
+            if (max_x == 0) {
+                return Down;
+            }
             if (x == 0) {
                 return RightTop;
             }
@@ -60,6 +63,9 @@ Direction next_direction(Direction current, int32_t x, int32_t y, int32_t max_x,
             break;
         }
         case Right: {
+            if (max_y == 0) {
+                return Right;
+            }
             if (y == 0) {
                 return LeftDown;
             }
