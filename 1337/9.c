@@ -4,8 +4,8 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-int32_t* product(int32_t* matrix_a, const int32_t* matrix_b, int32_t n) {
-    int32_t* result = calloc(n * n, sizeof(int32_t));
+int64_t* product(int64_t* matrix_a, const int64_t* matrix_b, int32_t n) {
+    int64_t* result = calloc(n * n, sizeof(int64_t));
     for (int32_t i = 0; i < n; i++) {
         for (int32_t j = 0; j < n; j++) {
             for (int32_t k = 0; k < n; k++) {
@@ -22,17 +22,17 @@ int32_t main(void) {
     int32_t times;
     scanf("%" PRIi32, &times);
     times -= 1;
-    int32_t* matrix = malloc(sizeof(int32_t) * n * n);
-    int32_t* matrix_clone = malloc(sizeof(int32_t) * n * n);
+    int64_t* matrix = malloc(sizeof(int64_t) * n * n);
+    int64_t* matrix_clone = malloc(sizeof(int64_t) * n * n);
     for (int32_t i = 0; i < n * n; i++) {
-        scanf("%" PRIi32, &matrix[i]);
+        scanf("%" PRIi64, &matrix[i]);
         matrix_clone[i] = matrix[i];
     }
     for (int32_t i = 0; i < times; i++) {
         matrix = product(matrix, matrix_clone, n);
     }
     for (int32_t i = 0; i < n * n; i++) {
-        printf("%" PRIi32, matrix[i]);
+        printf("%" PRIi64, matrix[i]);
         if ((i + 1) % n == 0) {
             printf("\n");
         } else {
