@@ -1,4 +1,4 @@
-// 换位置
+// 画棋盘
 #include <inttypes.h>
 #include <stdbool.h>
 #include <stdint.h>
