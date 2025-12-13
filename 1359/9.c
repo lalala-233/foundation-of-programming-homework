@@ -20,7 +20,7 @@ const char* MONTH_S[12] = {
 };
 const int32_t COMMON_YEAR_DAY[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 const int32_t LEAP_YEAR_DAY[12] = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-int32_t as_days(int32_t year, int32_t month, int32_t day) {
+int32_t as_yy_mm_dd_days(int32_t year, int32_t month, int32_t day) {
     const int32_t* year_day;
     if (year % 4 == 0) {
         year_day = LEAP_YEAR_DAY;
@@ -39,6 +39,9 @@ int32_t as_days(int32_t year, int32_t month, int32_t day) {
     days += day;
     return days;
 }
+int32_t as_mm_dd_yy_days(int32_t month, int32_t day, int32_t year) {
+    return as_yy_mm_dd_days(year, month, day);
+}
 bool as_yy_mm_dd(int32_t year, int32_t month, int32_t day) {
     const int32_t* year_day;
     if (year % 4 == 0) {
@@ -50,6 +53,9 @@ bool as_yy_mm_dd(int32_t year, int32_t month, int32_t day) {
     result = result && 1 <= month && month <= 12;
     result = result && 1 <= day && day <= year_day[month - 1];
     return result;
+}
+bool as_mm_dd_yy(int32_t month, int32_t day, int32_t year) {
+    return as_yy_mm_dd(year, month, day);
 }
 int32_t read_data() {
     int32_t result = 0;
@@ -64,16 +70,21 @@ int32_t main(void) {
     int32_t middle = read_data();
     int32_t right = read_data();
     bool is_yy_mm_dd = as_yy_mm_dd(left, middle, right);
-    bool is_mm_dd_yy = as_yy_mm_dd(right, left, middle);
+    bool is_mm_dd_yy = as_mm_dd_yy(left, middle, right);
 
     if (is_mm_dd_yy && is_yy_mm_dd) {
-        int32_t days_difference = as_days(left, middle, right) - as_days(right, left, middle);
-        printf("%" PRIi32 "\n", abs(days_difference));
-    } else if (is_yy_mm_dd) {
+        int32_t days_difference =
+            as_yy_mm_dd_days(left, middle, right) - as_mm_dd_yy_days(left, middle, right);
+        if (days_difference != 0) {
+            printf("%" PRIi32 "\n", abs(days_difference));
+            return 0;
+        }
+    }
+
+    if (is_yy_mm_dd) {
         printf("%s %" PRIi32 ", 20%02" PRIi32 "\n", MONTH_S[middle - 1], right, left);
     } else if (is_mm_dd_yy) {
         printf("%s %" PRIi32 ", 20%02" PRIi32 "\n", MONTH_S[left - 1], middle, right);
     }
-
     return 0;
 }
