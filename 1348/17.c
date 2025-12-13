@@ -32,7 +32,7 @@ int32_t match(const char* s, char expected) {
             return INT32_MIN;
         }
     }
-    if (offset <= 1) {
+    if (offset < 0) {
         return INT32_MIN;
     } else {
         return offset + match(s + offset, expected);
