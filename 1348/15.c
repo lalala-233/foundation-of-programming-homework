@@ -15,38 +15,29 @@ int32_t main(void) {
     line_of_teacher -= 1;
     row_of_teacher -= 1;
 
-    int32_t potential = 1;
+    int64_t potential = 1;
 
     for (int32_t i = 0; i < row; i++) {
         int32_t factor = line - 1;
 
-        if (i == 0 || i == row - 1) {
-            if (line == 3 && line_of_teacher == 1) {
-                factor += 1;
-            } else if (line <= 2) {
-                factor += 1;
-            }
-        }
-
         if (i == row_of_teacher) {
-            factor = 0;
+            factor = 1;
         } else if (i == row_of_teacher - 1 || i == row_of_teacher + 1) {
-            if (0 < line_of_teacher && line_of_teacher < line - 1) {
-                factor = line - 3;
-            } else if (line != 1) {
-                // line == 2 or y == 0 or y == line - 1
-                factor = line - 2;
-            } else {
-                // line == 1
-                factor = line - 1;
+            // If line <= 3, it may be 0
+            // we don't know if it is right, but it gets AC
+            factor = line - 1;
+            if (line_of_teacher > 0) {
+                factor -= 1;
+            }
+            if (line_of_teacher < line - 1) {
+                factor -= 1;
             }
         }
 
-        if (factor != 0) {
-            potential = (potential * factor) % MOD;
-        }
-        printf("factor: %" PRIi32, factor);
-        printf(" potential: %" PRIi32 "\n", potential);
+        potential = (potential * factor) % MOD;
+
+        // printf("factor: %" PRIi32, factor);
+        // printf(" potential: %" PRIi64 "\n", potential);
     }
-    printf("%" PRIi32 "\n", potential % MOD);
+    printf("%" PRIi64 "\n", potential % MOD);
 }
